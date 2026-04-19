@@ -5,23 +5,23 @@
 class BrightLocal < Formula
   desc "One-command local Bright Energy Dashboard stack for non-developers"
   homepage "https://github.com/bright-eu/bright-local"
-  version "0.1.3"
+  version "0.1.4"
   license "UNLICENSED"
 
   depends_on "docker" => :optional
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.3/bright-local_0.1.3_darwin_amd64.tar.gz"
-      sha256 "56f4efd6164c0e76115a401574ad484e953c628e3ee6a6f0367698fd0ad353dd"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.4/bright-local_0.1.4_darwin_amd64.tar.gz"
+      sha256 "efaa7b4f1c6bdfc367dc0ab52927edebd737d4b5dbbba15f4dc9cfa344e87d41"
 
       define_method(:install) do
         bin.install "bright-local"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.3/bright-local_0.1.3_darwin_arm64.tar.gz"
-      sha256 "f45b128fb55bfdc5b327d8b606c18f3ae4961c9f5e1b03eaad2871d01960e25d"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.4/bright-local_0.1.4_darwin_arm64.tar.gz"
+      sha256 "6686768c407da889b48d37fb9394191b95042d55e62fd125bf249a84eb876b99"
 
       define_method(:install) do
         bin.install "bright-local"
@@ -31,19 +31,30 @@ class BrightLocal < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.3/bright-local_0.1.3_linux_amd64.tar.gz"
-      sha256 "e9d32977f3c371ca90732c914d8e5515e19ed403442b43fb62b3d33e5c26e617"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.4/bright-local_0.1.4_linux_amd64.tar.gz"
+      sha256 "5fb7fd0edd55f17f78b15b49cc3417092f21e625dc0d708dfed57d6fd085c24a"
       define_method(:install) do
         bin.install "bright-local"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.3/bright-local_0.1.3_linux_arm64.tar.gz"
-      sha256 "5d5eb16fcab85454381a0d01a0aeaf50b0517046346fc10f447247deca9cc844"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.4/bright-local_0.1.4_linux_arm64.tar.gz"
+      sha256 "9d9ab460962f4f9644fa815f411c52152b88a17e23bd3bbeea90ec0460d69020"
       define_method(:install) do
         bin.install "bright-local"
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      Before `brew uninstall bright-local`, run:
+
+        bright-local purge
+
+      That removes the Docker containers, volumes, and images the
+      stack pulled. `brew uninstall` only removes the CLI binary.
+    EOS
   end
 
   test do
