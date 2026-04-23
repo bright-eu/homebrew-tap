@@ -5,23 +5,23 @@
 class BrightLocal < Formula
   desc "One-command local Bright Energy Dashboard stack for non-developers"
   homepage "https://github.com/bright-eu/bright-local"
-  version "0.1.11"
+  version "0.1.12"
   license "UNLICENSED"
 
   depends_on "docker" => :optional
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.11/bright-local_0.1.11_darwin_amd64.tar.gz"
-      sha256 "db7ff7fe5bc232dbaaa664c07026400269c2557a395e200816adff02fc301cf4"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.12/bright-local_0.1.12_darwin_amd64.tar.gz"
+      sha256 "02a444e591f27716ef4730b7b5114f873db5afcb4130aba148ce82725c0f7ba7"
 
       define_method(:install) do
         bin.install "bright-local"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.11/bright-local_0.1.11_darwin_arm64.tar.gz"
-      sha256 "eccec16d9f65239b5ee6004490338f6b6574f509c0b227f1338f0fd96ff7c36d"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.12/bright-local_0.1.12_darwin_arm64.tar.gz"
+      sha256 "7a0b802bba5ff5a30d12235acd541e137d20e18d0da0814ee8524faad164715c"
 
       define_method(:install) do
         bin.install "bright-local"
@@ -31,15 +31,15 @@ class BrightLocal < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.11/bright-local_0.1.11_linux_amd64.tar.gz"
-      sha256 "e1e930441d66c9fcbc71dadc9cc5a72fca06b88b3164f4dd6ea034e1341006dd"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.12/bright-local_0.1.12_linux_amd64.tar.gz"
+      sha256 "22943a189e7d281aa6e29621f37660c14022c257d9b4e34e21e624481050876f"
       define_method(:install) do
         bin.install "bright-local"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.11/bright-local_0.1.11_linux_arm64.tar.gz"
-      sha256 "44376ca7f5267dbb1702cb56f66438af7a33c39594d98a7448f996e6ae008a94"
+      url "https://github.com/bright-eu/bright-local-dist/releases/download/v0.1.12/bright-local_0.1.12_linux_arm64.tar.gz"
+      sha256 "0dee304517e7891e4c29c453fd0ec8d46ba99900e6231e330faed85805c74ce8"
       define_method(:install) do
         bin.install "bright-local"
       end
